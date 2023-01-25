@@ -1,2 +1,3 @@
-const a = 5
-console.log(a)
+import app from "./app"
+
+app.listen(3000)

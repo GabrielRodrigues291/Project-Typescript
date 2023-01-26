@@ -1,7 +1,7 @@
 import express, { json } from "express"
-// import mongoose from "mongoose"
+import mongoose from "mongoose"
 import cors from "cors"
-
+import routers from "../src/routes"
 class app {
   public express: express.Application
 
@@ -13,7 +13,12 @@ class app {
   }
 
   private conectDatabase(): void {
-    // mongoose.connect("")
+    mongoose
+      .connect("mongodb://localhost:27017/noticias")
+      .then(() => {
+        console.log("Conection Sucessfull")
+      })
+      .catch(e => console.log("Erro Connect: " + e))
   }
 
   private middwares(): void {
@@ -22,9 +27,7 @@ class app {
   }
 
   private router() {
-    this.express.get("", (req, res) => {
-      return res.send(JSON.stringify({ message: "Hellow Hord" }))
-    })
+    this.express.use(routers)
   }
 }
 

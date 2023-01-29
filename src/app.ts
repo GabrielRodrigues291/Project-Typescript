@@ -1,7 +1,9 @@
 import express, { json } from "express"
 import mongoose from "mongoose"
 import cors from "cors"
-import routers from "../src/routes"
+import routers from "../src/routers"
+mongoose.set("strictQuery", false)
+mongoose.set("strictQuery", true)
 class app {
   public express: express.Application
 
@@ -13,12 +15,7 @@ class app {
   }
 
   private conectDatabase(): void {
-    mongoose
-      .connect("mongodb://localhost:27017/noticias")
-      .then(() => {
-        console.log("Conection Sucessfull")
-      })
-      .catch(e => console.log("Erro Connect: " + e))
+    mongoose.connect("mongodb://localhost:27017/usuarios")
   }
 
   private middwares(): void {

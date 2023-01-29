@@ -1,9 +1,18 @@
 import { Schema, model } from "mongoose"
 
-const News = new Schema({
-  titulo: String,
-  datePublic: Date,
-  description: String,
+const Usuarios = new Schema({
+  email: {
+    type: String,
+  },
+  senha: {
+    type: String,
+  },
+  login: {
+    type: String,
+  },
+  id: {
+    type: Number,
+  },
 })
 
-export default model("Noticias", News)
+export default model("usuarios", Usuarios)
